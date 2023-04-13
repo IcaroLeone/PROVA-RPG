@@ -1,0 +1,108 @@
+using System;
+
+// Classe abstrata para representar um personagem de RPG
+public abstract class Personagem
+{
+    public abstract void Andar();
+    public abstract void Atacar();
+    public abstract void Defender();
+}
+
+// Interface para representar a habilidade de se movimentar
+public interface IMovimentavel
+{
+    void Mover();
+}
+
+// Interface para representar a habilidade de atacar
+public interface IAtacavel
+{
+    void Atacar();
+}
+
+// Interface para representar a habilidade de defender
+public interface IDefensavel
+{
+    void Defender();
+}
+
+// Classe concreta que representa um guerreiro
+public class Guerreiro : Personagem, IMovimentavel, IAtacavel, IDefensavel
+{
+    public void Mover()
+    {
+        Console.WriteLine("Guerreiro anda até dois espaços.");
+    }
+
+    public void Atacar()
+    {
+        Console.WriteLine("Guerreiro ataca duas vezes no mesmo turno.");
+    }
+
+    public void Defender()
+    {
+        Console.WriteLine("Guerreiro defende com o escudo.");
+    }
+}
+
+// Classe concreta que representa um mago
+public class Mago : Personagem, IMovimentavel, IAtacavel, IDefensavel
+{
+    public void Mover()
+    {
+        Console.WriteLine("Mago anda até três espaços (correndo).");
+    }
+
+    public void Atacar()
+    {
+        Console.WriteLine("Mago ataca com bolas de elementos (fogo, terra, ar e água).");
+    }
+
+    public void Defender()
+    {
+        Console.WriteLine("Mago defende com barreira de ar.");
+    }
+}
+
+// Classe concreta que representa um ranger
+public class Ranger : Personagem, IMovimentavel, IAtacavel, IDefensavel
+{
+    public void Mover()
+    {
+        Console.WriteLine("Ranger anda até cinco casas (pulando).");
+    }
+
+    public void Atacar()
+    {
+        Console.WriteLine("Ranger ataca com arco e flechas.");
+    }
+
+    public void Defender()
+    {
+        Console.WriteLine("Ranger esquiva.");
+    }
+}
+
+// Classe principal do programa
+public class Program
+{
+    public static void Main()
+    {
+        // Exemplo de uso das classes e interfaces para simular um sistema de batalha de RPG
+        Personagem guerreiro = new Guerreiro();
+        Personagem mago = new Mago();
+        Personagem ranger = new Ranger();
+
+        guerreiro.Andar();
+        guerreiro.Atacar();
+        guerreiro.Defender();
+
+        mago.Andar();
+        mago.Atacar();
+        mago.Defender();
+
+        ranger.Andar();
+        ranger.Atacar();
+        ranger.Defender();
+    }
+}
